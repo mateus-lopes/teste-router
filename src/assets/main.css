@@ -1,0 +1,11 @@
+/* vuecss - config */
+@import "./base.css";
+
+/* tailwind - config */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
