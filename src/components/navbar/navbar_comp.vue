@@ -24,11 +24,13 @@ export default {
 }
 </script>
 <template>
-    <section class="shadow-lg md:py-5 lg:py-4 xl:py-5">
+    <section class="shadow-lg md:py-5 lg:py-3 bg-white">
         <header class="flex items-center px-10 lg:px-32 py-3 text-gray-600 m-0">
             <div class="flex justify-between w-full items-center gap-8">
-                <div class="flex lg:w-5/12 gap-8 items-center">
-                    <img src="../../assets/img/logo-inline.png" class="h-10" alt="">
+                <div class="flex lg:w-5/12 xl:w-7/12 gap-8 items-center">
+                    <router-link to="/" class="h-8">
+                        <img src="../../assets/img/logo-inline.png" alt="">
+                    </router-link>
                     <div class="w-full hidden lg:block">
                         <form>   
                             <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>

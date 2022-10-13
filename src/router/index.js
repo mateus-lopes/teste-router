@@ -17,9 +17,9 @@ const router = createRouter({
       component: lazyload('HomeView')
     },
     {
-      path: '/about',
-      name: 'about',
-      component: lazyload('AboutView')
+      path: '/categories',
+      name: 'categories',
+      component: lazyload('CategoriesView')
     },
     {
       path: '/login',
