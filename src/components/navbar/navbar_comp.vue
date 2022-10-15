@@ -1,5 +1,6 @@
 <script>
 import NavbarMain from './navbar_main.vue'
+import Navbar_main from './navbar_main.vue'
 
 export default {
     data() {
@@ -11,8 +12,9 @@ export default {
         }
     },
     components: {
-        NavbarMain,
-    },
+    NavbarMain,
+    Navbar_main
+},
     methods: {
         toogle_navbar() {
             console.log('toogle_navbar activate')
@@ -27,7 +29,7 @@ export default {
     <section class="shadow-lg md:py-5 lg:py-3 bg-white">
         <header class="flex items-center px-10 lg:px-32 py-3 text-gray-600 m-0">
             <div class="flex justify-between w-full items-center gap-8">
-                <div class="flex lg:w-5/12 xl:w-7/12 gap-8 items-center">
+                <div class="flex lg:w-full xl:w-6/12 gap-8 items-center">
                     <router-link to="/" class="h-8">
                         <img src="../../assets/img/logo-inline.png" alt="">
                     </router-link>
@@ -36,7 +38,7 @@ export default {
                             <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
                             <div class="relative flex items-center">
                                 <input type="search" id="default-search" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-3xl border border-gray-300 focus:ring-teal-500 focus:border-teal-500" placeholder="Pesquisar..." required="">
-                                <button type="submit" class="text-white w-12 h-12 ml-3 bg-primary hover:bg-primary flex items-center justify-center focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-full text-sm px-4 py-2">
+                                <button type="submit" class="text-white w-12 h-12 ml-3 hover:bg-cyan-700 transition-all bg-primary flex items-center justify-center focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-full text-sm px-4 py-2">
                                     <svg aria-hidden="true" class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                 </button>
                             </div>
@@ -44,10 +46,15 @@ export default {
                     </div>
                 </div>
                 <div class="flex items-center">
-                    <button class="px-5 lg:px-7 py-3.5 bg-primary text-white  rounded-3xl">
-                        Entrar
-                    </button>
-                    <button @click="toogle_navbar" class="text-gray-900 ml-6 lg:ml-3 lg:flex items-center">
+                    <div class="hidden xl:block mr-4">
+                        <Navbar_main></Navbar_main>
+                    </div>
+                    <router-link to="/login">
+                        <button class="px-5 lg:px-7 py-3.5 hover:bg-cyan-700 transition-all bg-primary text-white  rounded-3xl">
+                            Entrar
+                        </button>
+                    </router-link>
+                    <button @click="toogle_navbar" class="text-gray-900 ml-6 lg:ml-3 items-center xl:hidden">
                         <button class="hidden lg:block px-4 py-3 border-2 text-sm rounded-3xl">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 @click="link_to_link" class="cursor-pointer border-l-2 border-gray-400 pl-2 text-3xl">
+        <h1 @click="link_to_link" class="cursor-pointer border-l-2 border-cyan-500 pl-2 text-3xl">
             <slot></slot>
         </h1>
     </div>

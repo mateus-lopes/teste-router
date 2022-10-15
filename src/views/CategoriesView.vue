@@ -1,7 +1,5 @@
 <script setup>
 import Navbar_comp from '../components/navbar/navbar_comp.vue';
-import Title from '../components/title.vue';
-import Lista_filmes from '../components/lista_filmes.vue';
 import Footer from '../components/footer.vue';
 import Category from '../components/category.vue';
 
@@ -19,8 +17,11 @@ const categories = [
   'Comedia Barata',
   'Ação e Aventura',   
   'Recentes de Bilheteria',
+  'Comedia Barata', 
+  'Recentes de Bilheteria',
   'Comedia Barata',
   'Ação e Aventura',  
+  'Recentes de Bilheteria',
 ]
   
 
@@ -35,7 +36,7 @@ const categories = [
       <h1 class="text-4xl pb-10 text-center">
         Todas as Categorias
       </h1>
-      <div class="flex text-white flex-wrap rounded-3xl bg-gray-700 overflow-hidden">
+      <div class="container mx-auto flex text-white flex-wrap rounded-3xl bg-gray-700 overflow-hidden">
         <article class="grow" v-for="category in categories">
           <router-link to="/">
             <Category>

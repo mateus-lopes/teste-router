@@ -5,10 +5,8 @@
         :space-between="25"
         :modules="modules" 
     >
-        <swiper-slide v-for="i in movies">
-            <a href="#" class="w-full h-full">
-                <img :src="i" class="w-full" alt="">
-            </a>
+        <swiper-slide v-for="movie in movies">
+            <Card_movie :movie="movie" />
         </swiper-slide>
     </swiper>
     <swiper
@@ -20,8 +18,8 @@
         :navigation="true" 
         :modules="modules" 
     >
-        <swiper-slide v-for="i in movies">
-            <img :src="i" class="w-full" alt="">
+        <swiper-slide v-for="movie in movies">
+            <img @click="go_movie" :src="movie.url_img" class="cursor-pointer w-full" alt="">
         </swiper-slide>
     </swiper>
     <swiper
@@ -33,8 +31,8 @@
         :navigation="true" 
         :modules="modules" 
     >
-        <swiper-slide v-for="i in movies">
-            <img :src="i" class="w-full" alt="">
+        <swiper-slide v-for="movie in movies">
+            <img @click="go_movie" :src="movie.url_img" class="cursor-pointer w-full" alt="">
         </swiper-slide>
     </swiper>
     <swiper
@@ -47,8 +45,8 @@
         :grid="true"
         :modules="modules" 
     >
-        <swiper-slide v-for="i in movies">
-            <img :src="i" class="w-full" alt="">
+        <swiper-slide v-for="movie in movies">
+            <Card_movie :movie="movie" />
         </swiper-slide>
     </swiper>
 </template>
@@ -61,15 +59,17 @@
     import 'swiper/css';
     import "swiper/css/navigation"; 
     import "swiper/css/grid";
-
+    
     // import required modules
     import { Navigation, Grid } from "swiper";
+import Card_movie from './card_movie.vue';
 
     export default {
         components: {
-            Swiper,
-            SwiperSlide,
-        },
+    Swiper,
+    SwiperSlide,
+    Card_movie
+},
         props: {
             movies: Array,
         },
@@ -85,7 +85,7 @@
 
 <style>
     .swiper-button-next {
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.7);
         height: 100%;
         top: 0;
         margin: 0;
@@ -96,7 +96,7 @@
         color: #03989E;
     }
     .swiper-button-prev {
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.7);
         height: 100%;
         top: 0;
         margin: 0;

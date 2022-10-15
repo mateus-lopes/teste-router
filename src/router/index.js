@@ -22,6 +22,21 @@ const router = createRouter({
       component: lazyload('CategoriesView')
     },
     {
+      path: '/perfil',
+      name: 'perfil',
+      component: lazyload('PerfilView')
+    },
+    {
+      path: '/help',
+      name: 'help',
+      component: lazyload('HelpView')
+    },
+    {
+      path: '/movie',
+      name: 'movie',
+      component: lazyload('MovieView')
+    },
+    {
       path: '/login',
       name: 'login',
       component: lazyload('LoginSession', 'login')
