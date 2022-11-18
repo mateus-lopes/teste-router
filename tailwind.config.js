@@ -13,6 +13,9 @@ module.exports = {
         container: {
           center: true,
         },
+        spacing: {
+          '128': '9em',
+        }
       },
     },
   },

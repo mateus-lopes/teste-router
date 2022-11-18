@@ -32,7 +32,7 @@ const router = createRouter({
       component: lazyload('HelpView')
     },
     {
-      path: '/movie',
+      path: '/movie/:id',
       name: 'movie',
       component: lazyload('MovieView')
     },

@@ -5,7 +5,7 @@
         :space-between="25"
         :modules="modules" 
     >
-        <swiper-slide v-for="movie in movies">
+        <swiper-slide v-for="movie in allMovies">
             <Card_movie :movie="movie" />
         </swiper-slide>
     </swiper>
@@ -18,8 +18,8 @@
         :navigation="true" 
         :modules="modules" 
     >
-        <swiper-slide v-for="movie in movies">
-            <img @click="go_movie" :src="movie.url_img" class="cursor-pointer w-full" alt="">
+        <swiper-slide v-for="movie in allMovies">
+            <Card_movie :movie="movie" />
         </swiper-slide>
     </swiper>
     <swiper
@@ -31,8 +31,8 @@
         :navigation="true" 
         :modules="modules" 
     >
-        <swiper-slide v-for="movie in movies">
-            <img @click="go_movie" :src="movie.url_img" class="cursor-pointer w-full" alt="">
+        <swiper-slide v-for="movie in allMovies">
+            <Card_movie :movie="movie" />
         </swiper-slide>
     </swiper>
     <swiper
@@ -45,7 +45,7 @@
         :grid="true"
         :modules="modules" 
     >
-        <swiper-slide v-for="movie in movies">
+        <swiper-slide v-for="movie in allMovies">
             <Card_movie :movie="movie" />
         </swiper-slide>
     </swiper>
@@ -62,16 +62,17 @@
     
     // import required modules
     import { Navigation, Grid } from "swiper";
-import Card_movie from './card_movie.vue';
+    import Card_movie from './card_movie.vue';
+    import axios from 'axios';
 
     export default {
         components: {
-    Swiper,
-    SwiperSlide,
-    Card_movie
-},
+            Swiper,
+            SwiperSlide,
+            Card_movie
+        },
         props: {
-            movies: Array,
+            genre_id: Number,
         },
         setup() {
             const swiper = useSwiper();
@@ -79,6 +80,21 @@ import Card_movie from './card_movie.vue';
                 modules: [Navigation, Grid],
                 swiper,
             };
+        },
+        data() {
+            return {
+                allMovies: ''
+            }
+        },
+        async mounted() {
+            const apiKey = '8eb4464e6497d821426a806cc6fa4e93'
+            const baseUrl = 'https://api.themoviedb.org/3'
+
+            axios.get(`${baseUrl}/discover/movie?api_key=${apiKey}&with_genres=${this.genre_id}&page=1&language=pt-br`)
+                .then((response) => {
+                    this.allMovies = response.data.results;
+                }
+            );
         },
     };
 </script>

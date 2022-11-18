@@ -1,22 +1,42 @@
-<script setup>
+<script>
 import Navbar_comp from '../components/navbar/navbar_comp.vue';
 import Footer from '../components/footer.vue';
 import Create_comment from '../components/create_comment.vue';
 import Comment from '../components/comment.vue';
+import axios from 'axios';
 
-const movie = {
-  'title':'O Telefone Preto',
-  'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-  'content': 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea, pariatur. Similique hic iure maiores earum at expedita sunt natus eveniet facere, repellendus ea aut eius. Molestiae maxime blanditiis ipsa unde!',
-  'author': 'Mari Mariana',
-  'like': 22,
-  'dislike': 13,
-  'director': 'mari mariana',
-  'release': 'mari mariana',
-  'duration': 'mari mariana',
-  'platform': 'mari mariana',
-  'cast': 'mari mariana',
-  'classification': 'mari mariana',
+export default {
+  data() {
+    return {
+      movie: '',
+    }
+  },
+  methods: {
+    returnImg(){
+      return `https://image.tmdb.org/t/p/w500/${this.movie.poster_path}`
+    },
+    returnReleaseDate() {
+      let date = (this.movie.release_date)
+      console.log(date)
+      return date
+    }
+  },
+  async mounted() {
+    const apiKey = '8eb4464e6497d821426a806cc6fa4e93'
+    const baseUrl = 'https://api.themoviedb.org/3'
+
+    axios.get(`${baseUrl}/movie/${this.$route.params.id}?api_key=${apiKey}&language=pt-br`)
+        .then((response) => {
+            this.movie = response.data;
+        }
+    );
+  },
+  components: {
+    Navbar_comp,
+    Footer,
+    Create_comment,
+    Comment,
+  }
 }
 </script>
 
@@ -28,31 +48,38 @@ const movie = {
     <section class="px-10 lg:px-32 py-3">
       <section class="flex flex-col xl:flex-row gap-10 justify-between mt-8">
         <div class="w-full lg:w-4/12 xl:w-4/12 md:flex xl:block">
-          <img :src="movie.url_img" class="w-full md:w-5/12 xl:w-full md:mr-8 xl:mr-0 rounded-2xl" alt="">
+          <img :src="returnImg()" class="w-full md:w-3/12 xl:w-full md:mr-8 xl:mr-0 rounded-2xl" alt="">
           <div class="hidden md:block xl:hidden">
             <section class="flex flex-col mt-4">
               <div>
                 <h2 class="text-xl py-4">
-                  <span class="font-bold">Diretor:</span> {{movie.author}}
-                </h2>
-                <h2 class="text-xl py-4">
-                  <span class="font-bold">Lançamento:</span> {{movie.author}}
-                </h2>
-                <h2 class="text-xl py-4">
-                  <span class="font-bold">Duração:</span> {{movie.author}}
-                </h2>
-              </div>
-              <div>
-                <h2 class="text-xl py-4">
-                  <span class="font-bold">Plataforma Dísponivel:</span> {{movie.author}}
-                </h2>
-                <h2 class="text-xl py-4">
-                  <span class="font-bold">Elenco:</span> {{movie.author}}
-                </h2>
-                <h2 class="text-xl py-4">
-                  <span class="font-bold">Classificação:</span> {{movie.author}}
-                </h2>
-              </div>
+                  <span class="font-bold">Genêros: </span> 
+                    <span class="genres">
+                      <span v-for="genre in movie.genres">
+                        <span v-if="genre.name == movie.genres[movie.genres.length - 1].name">
+                          {{genre.name}}
+                        </span>
+                        <span v-else>
+                          {{genre.name}}, 
+                        </span>
+                      </span>
+                    </span>
+                    {{movie.author}}
+                  </h2>
+                  <h2 class="text-xl py-4">
+                    <span class="font-bold">Data de Lançamento:</span> {{ (this.movie.release_date) }}
+                  </h2>
+                  <h2 class="text-xl py-4">
+                    <p><b>Lingua Original:</b> {{movie.original_language}}</p>
+                  </h2>
+                  <h2 class="text-xl py-4">
+                    <span class="font-bold">Duração:</span> {{movie.runtime}} minutos
+                  </h2>
+                  <h2 class="text-xl py-4">
+                    <p v-if="movie.adult"><b>Classificação:</b> Adulto</p>
+                    <p v-else><b>Classificação:</b> Livre</p> 
+                  </h2>
+                </div>
             </section>
           </div>
         </div>
@@ -61,31 +88,36 @@ const movie = {
             {{movie.title}}
           </h2>
           <p class="text-justify text-lg">
-            {{movie.content}}
-            {{movie.content}}
-            {{movie.content}}
+            {{movie.overview}}
           </p>
           <section class="flex-col md:hidden xl:block gap-10 mt-4">
             <div>
               <h2 class="text-xl py-4">
-                <span class="font-bold">Diretor:</span> {{movie.author}}
+                <span class="font-bold">Genêros: </span> 
+                <span class="genres">
+                  <span v-for="genre in movie.genres">
+                    <span v-if="genre.name == movie.genres[movie.genres.length - 1].name">
+                      {{genre.name}}
+                    </span>
+                    <span v-else>
+                      {{genre.name}}, 
+                    </span>
+                  </span>
+                </span>
+                {{movie.author}}
               </h2>
               <h2 class="text-xl py-4">
-                <span class="font-bold">Lançamento:</span> {{movie.author}}
+                <span class="font-bold">Data de Lançamento:</span> {{ returnReleaseDate() }}
               </h2>
               <h2 class="text-xl py-4">
-                <span class="font-bold">Duração:</span> {{movie.author}}
-              </h2>
-            </div>
-            <div>
-              <h2 class="text-xl py-4">
-                <span class="font-bold">Plataforma Dísponivel:</span> {{movie.author}}
+                <p><b>Lingua Original:</b> {{movie.original_language}}</p>
               </h2>
               <h2 class="text-xl py-4">
-                <span class="font-bold">Elenco:</span> {{movie.author}}
+                <span class="font-bold">Duração:</span> {{movie.runtime}} minutos
               </h2>
               <h2 class="text-xl py-4">
-                <span class="font-bold">Classificação:</span> {{movie.author}}
+                <p v-if="movie.adult"><b>Classificação:</b> Adulto</p>
+                <p v-else><b>Classificação:</b> Livre</p> 
               </h2>
             </div>
           </section>

@@ -1,92 +1,123 @@
-<script setup>
+<script>
 import Navbar_comp from '../components/navbar/navbar_comp.vue';
 import Title from '../components/title.vue';
 import Lista_filmes from '../components/lista_filmes.vue';
 import Footer from '../components/footer.vue';
+import axios from 'axios'
 
-const db = [
-  {
-    'id': 0,
-    'title': 'Recentes de Bilheteria',
-    'movies': [
-      {
-        'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-      },
-      {
-        'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-      },
-      {
-        'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-      },
-      {
-        'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-      },
-      {
-        'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-      },
-      {
-        'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-      },
-      {
-        'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-      },
-    ]
+export default {
+  data(){
+    return {
+      allGenres: ''
+    }
   },
-  {
-    'id': 0,
-    'title': 'Ação e Aventura',
-    'movies': [
-      {
-        'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-      },
-      {
-        'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-      },
-      {
-        'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-      },
-      {
-        'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-      },
-      {
-        'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-      },
-      {
-        'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-      },
-      {
-        'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-      },
-    ]
+  components: {
+    Navbar_comp,
+    Title,
+    Lista_filmes,
+    Footer,
   },
-  {
-    'id': 0,
-    'title': 'Terror',
-    'movies': [
-      {
-        'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-      },
-      {
-        'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-      },
-      {
-        'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-      },
-      {
-        'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-      },
-      {
-        'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-      },
-      {
-        'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-      },
-      {
-        'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-      },
-    ]
+  mounted() {
+    const apiKey = '8eb4464e6497d821426a806cc6fa4e93'
+    const baseUrl = 'https://api.themoviedb.org/3'
+
+    axios.get(`${baseUrl}/genre/movie/list?api_key=${apiKey}&language=pt-br`)
+      .then((response) => {
+        this.allGenres = response.data;
+      }
+    );
+
   },
-]
+}
+
+// const db = [
+//   {
+//     'id': 0,
+//     'title': 'Recentes de Bilheteria',
+//     'movies': [
+//       {
+//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
+//       },
+//       {
+//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
+//       },
+//       {
+//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
+//       },
+//       {
+//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
+//       },
+//       {
+//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
+//       },
+//       {
+//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
+//       },
+//       {
+//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
+//       },
+//     ]
+//   },
+//   {
+//     'id': 0,
+//     'title': 'Ação e Aventura',
+//     'movies': [
+//       {
+//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
+//       },
+//       {
+//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
+//       },
+//       {
+//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
+//       },
+//       {
+//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
+//       },
+//       {
+//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
+//       },
+//       {
+//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
+//       },
+//       {
+//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
+//       },
+//     ]
+//   },
+//   {
+//     'id': 0,
+//     'title': 'Terror',
+//     'movies': [
+//       {
+//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
+//       },
+//       {
+//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
+//       },
+//       {
+//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
+//       },
+//       {
+//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
+//       },
+//       {
+//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
+//       },
+//       {
+//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
+//       },
+//       {
+//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
+//       },
+//     ]
+//   },
+// ]
+
+
+
+// 1 - bilheteria 2 
+
 </script>
 
 <template>
@@ -95,12 +126,13 @@ const db = [
       <Navbar_comp />
     </header>
     <section class="px-10 lg:px-32 py-3">
-      <article class="mt-8" v-for="category in db">
+      <p class="pt-10">allGenres: {{ !!allGenres }}</p>
+      <article class="mt-8" v-for="genre in allGenres.genres">
         <Title>
-          {{ category.title }}
+          {{ genre.name }}
         </Title>
         <div class="w-full pt-4">
-          <Lista_filmes :movies="category.movies">
+          <Lista_filmes :genre_id="genre.id">
           </Lista_filmes>
         </div>
       </article>

@@ -2,6 +2,9 @@
 import Navbar_comp from '../components/navbar/navbar_comp.vue';
 import Footer from '../components/footer.vue';
 import Category from '../components/category.vue';
+import axios from 'axios';
+
+const genres = axios.get(`${baseUrl}/movie/${this.$route.params.id}?api_key=${apiKey}&language=pt-br`)
 
 const categories = [
   'Recentes de Bilheteria',
