@@ -1,15 +1,16 @@
 <script>
-import Navbar_comp from '../components/navbar/navbar_comp.vue';
-import Title from '../components/title.vue';
-import Lista_filmes from '../components/lista_filmes.vue';
-import Footer from '../components/footer.vue';
-import axios from 'axios'
+import Navbar_comp from "../components/navbar/navbar_comp.vue";
+import Title from "../components/title.vue";
+import Lista_filmes from "../components/lista_filmes.vue";
+import Footer from "../components/footer.vue";
+import axios from "axios";
+import { useRouter } from "vue-router";
 
 export default {
-  data(){
+  data() {
     return {
-      allGenres: ''
-    }
+      allGenres: "",
+    };
   },
   components: {
     Navbar_comp,
@@ -18,17 +19,21 @@ export default {
     Footer,
   },
   mounted() {
-    const apiKey = '8eb4464e6497d821426a806cc6fa4e93'
-    const baseUrl = 'https://api.themoviedb.org/3'
+    const apiKey = "8eb4464e6497d821426a806cc6fa4e93";
+    const baseUrl = "https://api.themoviedb.org/3";
 
-    axios.get(`${baseUrl}/genre/movie/list?api_key=${apiKey}&language=pt-br`)
+    const logged = $cookies.get("logged");
+    if (!logged) {
+      this.$router.push("/login");
+    }
+
+    axios
+      .get(`${baseUrl}/genre/movie/list?api_key=${apiKey}&language=pt-br`)
       .then((response) => {
         this.allGenres = response.data;
-      }
-    );
-
+      });
   },
-}
+};
 
 // const db = [
 //   {
@@ -114,10 +119,7 @@ export default {
 //   },
 // ]
 
-
-
-// 1 - bilheteria 2 
-
+// 1 - bilheteria 2
 </script>
 
 <template>
@@ -132,8 +134,7 @@ export default {
           {{ genre.name }}
         </Title>
         <div class="w-full pt-4">
-          <Lista_filmes :genre_id="genre.id">
-          </Lista_filmes>
+          <Lista_filmes :genre_id="genre.id"> </Lista_filmes>
         </div>
       </article>
     </section>

@@ -1,33 +1,41 @@
 <script setup>
-import Navbar_comp from '../components/navbar/navbar_comp.vue';
-import Footer from '../components/footer.vue';
-import Category from '../components/category.vue';
-import axios from 'axios';
+import Navbar_comp from "../components/navbar/navbar_comp.vue";
+import Footer from "../components/footer.vue";
+import Category from "../components/category.vue";
+import axios from "axios";
 
-const genres = axios.get(`${baseUrl}/movie/${this.$route.params.id}?api_key=${apiKey}&language=pt-br`)
+import { useRouter } from "vue-router";
+const router = useRouter();
+
+const logged = $cookies.get("logged");
+if (!logged) {
+  router.push("/login");
+}
+const baseUrl = "https://api.themoviedb.org/3";
+const genres = axios.get(
+  `${baseUrl}/movie/${this.$route.params.id}?api_key=${apiKey}&language=pt-br`
+);
 
 const categories = [
-  'Recentes de Bilheteria',
-  'Comedia Barata',
-  'Ação e Aventura',  
-  'Recentes de Bilheteria',
-  'Comedia Barata',
-  'Ação e Aventura', 
-  'Recentes de Bilheteria',
-  'Comedia Barata',
-  'Ação e Aventura',  
-  'Recentes de Bilheteria',
-  'Comedia Barata',
-  'Ação e Aventura',   
-  'Recentes de Bilheteria',
-  'Comedia Barata', 
-  'Recentes de Bilheteria',
-  'Comedia Barata',
-  'Ação e Aventura',  
-  'Recentes de Bilheteria',
-]
-  
-
+  "Recentes de Bilheteria",
+  "Comedia Barata",
+  "Ação e Aventura",
+  "Recentes de Bilheteria",
+  "Comedia Barata",
+  "Ação e Aventura",
+  "Recentes de Bilheteria",
+  "Comedia Barata",
+  "Ação e Aventura",
+  "Recentes de Bilheteria",
+  "Comedia Barata",
+  "Ação e Aventura",
+  "Recentes de Bilheteria",
+  "Comedia Barata",
+  "Recentes de Bilheteria",
+  "Comedia Barata",
+  "Ação e Aventura",
+  "Recentes de Bilheteria",
+];
 </script>
 
 <template>
@@ -36,14 +44,14 @@ const categories = [
       <Navbar_comp />
     </header>
     <section class="px-10 lg:px-32 py-3 mt-10 flex-col justify-center">
-      <h1 class="text-4xl pb-10 text-center">
-        Todas as Categorias
-      </h1>
-      <div class="container mx-auto flex text-white flex-wrap rounded-3xl bg-gray-700 overflow-hidden">
+      <h1 class="text-4xl pb-10 text-center">Todas as Categorias</h1>
+      <div
+        class="container mx-auto flex text-white flex-wrap rounded-3xl bg-gray-700 overflow-hidden"
+      >
         <article class="grow" v-for="category in categories">
           <router-link to="/">
             <Category>
-              {{category}}
+              {{ category }}
             </Category>
           </router-link>
         </article>
