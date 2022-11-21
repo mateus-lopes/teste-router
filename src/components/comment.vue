@@ -5,9 +5,9 @@
     </p>
     <h3 class="mt-2">
       Author:
-      <span class="text-cyan-700 underline cursor-pointer">
-        {{ author.username}}
-      </span>
+      <span class="text-cyan-700 underline cursor-pointer">{{
+        author.username
+      }}</span>
     </h3>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <label for="message" class="block mb-2 text-lg font-medium text-gray-900">
-      Deixe sua crítica aqui:
+      Deixe sua critica aqui:
     </label>
     <textarea
       id="message"
