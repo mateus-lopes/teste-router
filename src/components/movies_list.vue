@@ -103,7 +103,7 @@
     .swiper-button-next {
         background-color: rgba(0, 0, 0, 0.7);
         height: 100%;
-        top: 0;
+        top: 0 ;
         margin: 0;
         right: 0;
         padding: 0 2em;

@@ -1,34 +1,45 @@
 <script>
-import Navbar_comp from '../components/navbar/navbar_comp.vue';
-import Title from '../components/title.vue';
-import Lista_filmes from '../components/lista_filmes.vue';
-import Footer from '../components/footer.vue';
-import axios from 'axios'
+import Navbar_comp from "../components/navbar/navbar_comp.vue";
+import Title from "../components/title.vue";
+<<<<<<< HEAD
+import Movies_List from "../components/movies_list.vue";
+=======
+import Lista_filmes from "../components/lista_filmes.vue";
+>>>>>>> 806c9af6c78f352411ca007bb52065afa2640705
+import Footer from "../components/footer.vue";
+import axios from "axios";
+import { useRouter } from "vue-router";
 
 export default {
-  data(){
+  data() {
     return {
-      allGenres: ''
-    }
+      allGenres: "",
+    };
   },
   components: {
     Navbar_comp,
     Title,
-    Lista_filmes,
+    Movies_List,
     Footer,
   },
   mounted() {
-    const apiKey = '8eb4464e6497d821426a806cc6fa4e93'
-    const baseUrl = 'https://api.themoviedb.org/3'
+    const apiKey = "8eb4464e6497d821426a806cc6fa4e93";
+    const baseUrl = "https://api.themoviedb.org/3";
 
-    axios.get(`${baseUrl}/genre/movie/list?api_key=${apiKey}&language=pt-br`)
+    const logged = $cookies.get("logged");
+    if (!logged) {
+      this.$router.push("/login");
+    }
+
+    axios
+      .get(`${baseUrl}/genre/movie/list?api_key=${apiKey}&language=pt-br`)
       .then((response) => {
         this.allGenres = response.data;
-      }
-    );
-
+      });
   },
-}
+};
+<<<<<<< HEAD
+=======
 
 // const db = [
 //   {
@@ -114,10 +125,8 @@ export default {
 //   },
 // ]
 
-
-
-// 1 - bilheteria 2 
-
+// 1 - bilheteria 2
+>>>>>>> 806c9af6c78f352411ca007bb52065afa2640705
 </script>
 
 <template>
@@ -126,14 +135,16 @@ export default {
       <Navbar_comp />
     </header>
     <section class="px-10 lg:px-32 py-3">
-      <p class="pt-10">allGenres: {{ !!allGenres }}</p>
       <article class="mt-8" v-for="genre in allGenres.genres">
         <Title>
           {{ genre.name }}
         </Title>
         <div class="w-full pt-4">
-          <Lista_filmes :genre_id="genre.id">
-          </Lista_filmes>
+<<<<<<< HEAD
+          <Movies_List :genre_id="genre.id"> </Movies_List>
+=======
+          <Lista_filmes :genre_id="genre.id"> </Lista_filmes>
+>>>>>>> 806c9af6c78f352411ca007bb52065afa2640705
         </div>
       </article>
     </section>
