@@ -1,11 +1,7 @@
 <template>
   <div>
     <label for="message" class="block mb-2 text-lg font-medium text-gray-900">
-<<<<<<< HEAD
       Deixe sua crítica aqui:
-=======
-      Deixe sua critica aqui:
->>>>>>> 806c9af6c78f352411ca007bb52065afa2640705
     </label>
     <textarea
       id="message"

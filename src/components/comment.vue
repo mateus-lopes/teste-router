@@ -5,15 +5,9 @@
     </p>
     <h3 class="mt-2">
       Author:
-<<<<<<< HEAD
       <span class="text-cyan-700 underline cursor-pointer">
         {{ author.username}}
       </span>
-=======
-      <span class="text-cyan-700 underline cursor-pointer">{{
-        author.username
-      }}</span>
->>>>>>> 806c9af6c78f352411ca007bb52065afa2640705
     </h3>
   </div>
 </template>
@@ -47,8 +41,3 @@ export default {
   },
 };
 </script>
-
-<<<<<<< HEAD
-=======
-<style lang="scss" scoped></style>
->>>>>>> 806c9af6c78f352411ca007bb52065afa2640705

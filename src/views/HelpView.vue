@@ -16,7 +16,6 @@ if (!logged) {
       <Navbar_comp />
     </header>
     <section class="px-10 lg:px-32 py-3 mt-10 flex-col justify-center">
-<<<<<<< HEAD
       <h1 class="text-4xl pb-5 text-left">Pagina de Ajuda</h1>
       <hr>
       <div class="lowercase pt-5">
@@ -121,9 +120,6 @@ if (!logged) {
         <div>&nbsp;</div>
         <div>4.19. A METADADOS n&atilde;o garante que o SOFTWARE ser&aacute; ininterrupto ou livre de erros, que defeitos ser&atilde;o corrigidos ou que o servidor em que ele &eacute; disponibilizado ou qualquer sistema conectado a ele est&aacute; livre de v&iacute;rus ou outros component     es nocivos.</div>
       </div>
-=======
-      <h1 class="text-4xl pb-10 text-left">Pagina de Ajuda</h1>
->>>>>>> 806c9af6c78f352411ca007bb52065afa2640705
     </section>
     <Footer></Footer>
   </main>

@@ -1,11 +1,7 @@
 <script>
 import Navbar_comp from "../components/navbar/navbar_comp.vue";
 import Title from "../components/title.vue";
-<<<<<<< HEAD
 import Movies_List from "../components/movies_list.vue";
-=======
-import Lista_filmes from "../components/lista_filmes.vue";
->>>>>>> 806c9af6c78f352411ca007bb52065afa2640705
 import Footer from "../components/footer.vue";
 import axios from "axios";
 import { useRouter } from "vue-router";
@@ -38,95 +34,6 @@ export default {
       });
   },
 };
-<<<<<<< HEAD
-=======
-
-// const db = [
-//   {
-//     'id': 0,
-//     'title': 'Recentes de Bilheteria',
-//     'movies': [
-//       {
-//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-//       },
-//       {
-//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-//       },
-//       {
-//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-//       },
-//       {
-//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-//       },
-//       {
-//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-//       },
-//       {
-//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-//       },
-//       {
-//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-//       },
-//     ]
-//   },
-//   {
-//     'id': 0,
-//     'title': 'Ação e Aventura',
-//     'movies': [
-//       {
-//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-//       },
-//       {
-//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-//       },
-//       {
-//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-//       },
-//       {
-//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-//       },
-//       {
-//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-//       },
-//       {
-//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-//       },
-//       {
-//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-//       },
-//     ]
-//   },
-//   {
-//     'id': 0,
-//     'title': 'Terror',
-//     'movies': [
-//       {
-//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-//       },
-//       {
-//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-//       },
-//       {
-//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-//       },
-//       {
-//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-//       },
-//       {
-//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-//       },
-//       {
-//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-//       },
-//       {
-//         'url_img': 'https://ingresso-a.akamaihd.net/prd/img/movie/o-telefone-preto/38adfeea-b28c-4beb-8116-268eaa083311.jpg',
-//       },
-//     ]
-//   },
-// ]
-
-// 1 - bilheteria 2
->>>>>>> 806c9af6c78f352411ca007bb52065afa2640705
 </script>
 
 <template>
@@ -140,11 +47,7 @@ export default {
           {{ genre.name }}
         </Title>
         <div class="w-full pt-4">
-<<<<<<< HEAD
           <Movies_List :genre_id="genre.id"> </Movies_List>
-=======
-          <Lista_filmes :genre_id="genre.id"> </Lista_filmes>
->>>>>>> 806c9af6c78f352411ca007bb52065afa2640705
         </div>
       </article>
     </section>

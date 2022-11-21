@@ -21,44 +21,6 @@ export default {
       console.log(date);
       return date;
     },
-<<<<<<< HEAD
-=======
-  },
-  async mounted() {
-    const logged = $cookies.get("logged");
-    if (!logged) {
-      this.$router.push("/login");
-    }
-
-    const apiKey = "8eb4464e6497d821426a806cc6fa4e93";
-    const baseUrl = "https://api.themoviedb.org/3";
-
-    axios
-      .get(
-        `${baseUrl}/movie/${this.$route.params.id}?api_key=${apiKey}&language=pt-br`
-      )
-      .then((response) => {
-        console.log(response.data);
-        this.movie = response.data;
-      });
-
-    axios
-      .get(
-        "http://localhost:8000/comments/",
-        (Headers = {
-          headers: {
-            Authorization: `Bearer ${logged}`,
-          },
-        })
-      )
-      .then((response) => {
-        // filter comments by movie id
-        let comments = response.data.filter(
-          (comment) => comment.idMovie == this.movie.imdb_id
-        );
-        this.comments = comments;
-      });
->>>>>>> 806c9af6c78f352411ca007bb52065afa2640705
   },
   components: {
     Navbar_comp,
@@ -66,7 +28,6 @@ export default {
     Create_comment,
     Comment,
   },
-<<<<<<< HEAD
   async mounted() {
     const logged = $cookies.get("logged");
     if (!logged) {
@@ -102,8 +63,6 @@ export default {
         this.comments = comments;
       });
   },
-=======
->>>>>>> 806c9af6c78f352411ca007bb52065afa2640705
 };
 </script>
 
@@ -189,19 +148,11 @@ export default {
                 {{ returnReleaseDate() }}
               </h2>
               <h2 class="text-xl py-4">
-<<<<<<< HEAD
                 <span class="font-bold">Duração:</span>
                 {{ movie.runtime }} minutos
               </h2>
               <h2 class="text-xl py-4">
                 <p><b>Língua Original:</b> <span class="uppercase">{{ movie.original_language }}</span></p>
-=======
-                <p><b>Lingua Original:</b> {{ movie.original_language }}</p>
-              </h2>
-              <h2 class="text-xl py-4">
-                <span class="font-bold">Duração:</span>
-                {{ movie.runtime }} minutos
->>>>>>> 806c9af6c78f352411ca007bb52065afa2640705
               </h2>
               <h2 class="text-xl py-4">
                 <p v-if="movie.adult"><b>Classificação:</b> Adulto</p>
