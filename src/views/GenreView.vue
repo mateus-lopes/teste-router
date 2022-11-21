@@ -43,7 +43,9 @@ export default {
                     return genre.id == this.$route.params.id
                 }
             )[0];
-        });
+        }
+    );
+    
     axios
         .get(`${baseUrl}/discover/movie?api_key=${apiKey}&with_genres=${this.$route.params.id}&page=1&language=pt-br`)
         .then((response) => {

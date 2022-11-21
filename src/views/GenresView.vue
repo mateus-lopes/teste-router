@@ -28,12 +28,7 @@ export default {
   mounted() {
     const apiKey = "8eb4464e6497d821426a806cc6fa4e93";
     const baseUrl = "https://api.themoviedb.org/3";
-
-    // const logged = $cookies.get("logged");
-    // if (!logged) {
-    //   this.$router.push("/login");
-    // }
-
+    
     axios
       .get(`${baseUrl}/genre/movie/list?api_key=${apiKey}&language=pt-br`)
       .then((response) => {
