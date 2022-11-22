@@ -47,8 +47,8 @@ export default {
             Authorization: `Bearer ${this.logged}`,
           },
         })
-      );
-      console.log(response);
+      );        
+      window.location.reload(true);
     },
   },
 };

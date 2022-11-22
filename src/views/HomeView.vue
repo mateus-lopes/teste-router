@@ -42,6 +42,7 @@ export default {
       <Navbar_comp />
     </header>
     <section class="px-10 lg:px-32 py-3">
+      
       <article class="mt-8" v-for="genre in allGenres.genres">
         <Title>
           {{ genre.name }}

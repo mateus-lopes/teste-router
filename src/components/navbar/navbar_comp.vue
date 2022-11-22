@@ -101,14 +101,22 @@ export default {
           <div class="hidden xl:block mr-4">
             <Navbar_main></Navbar_main>
           </div>
-          <div v-if="is_logged">Seja bem vindo, {{ user.username }}</div>
-          <router-link v-else to="/login">
-            <button
-              class="px-5 lg:px-7 py-3.5 hover:bg-cyan-700 transition-all bg-primary text-white rounded-3xl"
-            >
-              Entrar
-            </button>
-          </router-link>
+          <div class="hidden md:block">
+            <router-link v-if="is_logged" to="/perfil">
+              <button
+                class="px-5 lg:px-7 py-3.5 hover:bg-cyan-700 transition-all bg-primary text-white rounded-3xl"
+              >
+              {{ user.username }}
+              </button>
+            </router-link>
+            <router-link v-else to="/login">
+              <button
+                class="px-5 lg:px-7 py-3.5 hover:bg-cyan-700 transition-all bg-primary text-white rounded-3xl"
+              >
+                Carregando...
+              </button>
+            </router-link>
+          </div>
           <button
             @click="toogle_navbar"
             class="text-gray-900 ml-6 lg:ml-3 items-center xl:hidden"

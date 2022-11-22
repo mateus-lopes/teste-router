@@ -9,6 +9,9 @@
         author.username
       }}</span>
     </h3>
+    <h4 v-if="comment.idWatcher == author.id" @click="delete_comment" class="mt-2 text-red-600 underline cursor-pointer">
+        Deletar
+    </h4>
   </div>
 </template>
 
@@ -21,6 +24,12 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      author: {},
+      logged:  this.$cookies.get("logged")
+    };
+  },
   methods: {
     async getAuthor() {
       const response = await axios.get(
@@ -28,11 +37,14 @@ export default {
       );
       return response.data;
     },
-  },
-  data() {
-    return {
-      author: {},
-    };
+    delete_comment() {
+      axios.delete(`http://localhost:8000/comments/${this.comment.id}`, (Headers = {
+          headers: {
+            Authorization: `Bearer ${this.logged}`,
+          }
+        }))
+        window.location.reload(true);
+    }
   },
   mounted() {
     this.getAuthor().then((response) => {
