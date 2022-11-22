@@ -99,7 +99,7 @@ export default {
         </div>
         <div class="flex items-center">
           <div class="hidden xl:block mr-4">
-            <Navbar_main></Navbar_main>
+            <Navbar_main />
           </div>
           <div class="hidden md:block">
             <router-link v-if="is_logged" to="/perfil">
